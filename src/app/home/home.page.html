@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar appTabsHide='true'>
+    <ion-title color="light">home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-button color="primary" expand="full" round strong (click)="getTest()"> 测试POST</ion-button>
+  <ion-button color="primary" expand="full" round strong (click)="getUrl()"> 测试GET </ion-button>
+  <ion-button color="primary" expand="full" round strong [routerLink]="[ '/tabs/home/home-detail' ]"> 详情页 </ion-button>
+  <ion-icon src="/assets/svg/ios-dyy.svg"></ion-icon>
+  <ion-icon name="aa"></ion-icon>
+  <ion-icon name="add-circle-outline"></ion-icon>
+  <ion-icon name="home"></ion-icon>
+</ion-content>
