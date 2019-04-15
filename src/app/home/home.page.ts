@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { HttpService } from 'src/services/httpService'
+import { HttpService } from '../../services/httpService'
+import * as $ from 'jquery'
+
 
 
 @Component({
@@ -9,7 +11,7 @@ import { HttpService } from 'src/services/httpService'
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  test: string = ''
   constructor(public navCtrl: NavController, private httpService: HttpService) { }
   
   getTest() {
@@ -26,6 +28,8 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
+    console.log($)
+    console.log('ngoninit')
   }
 
 }
