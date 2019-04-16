@@ -16,7 +16,7 @@ import { HttpModule } from '@angular/http'
 import { from } from 'rxjs';
 import { TabsHideDirective } from './tabs-hide.directive';
 import { PopupService } from 'src/services/popupService';
-
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent, TabsHideDirective],
@@ -29,7 +29,8 @@ import { PopupService } from 'src/services/popupService';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     HttpService,
-    PopupService
+    PopupService,
+    Network
   ],
   bootstrap: [AppComponent]
 })

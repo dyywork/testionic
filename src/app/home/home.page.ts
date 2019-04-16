@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { HttpService } from '../../services/httpService'
-import * as $ from 'jquery'
 
 
 
@@ -28,7 +27,6 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-    console.log($)
     console.log('ngoninit')
   }
 
