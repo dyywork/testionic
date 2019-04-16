@@ -17,6 +17,7 @@ import { from } from 'rxjs';
 import { TabsHideDirective } from './tabs-hide.directive';
 import { PopupService } from 'src/services/popupService';
 import { Network } from '@ionic-native/network/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @NgModule({
   declarations: [AppComponent, TabsHideDirective],
@@ -30,7 +31,8 @@ import { Network } from '@ionic-native/network/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     HttpService,
     PopupService,
-    Network
+    Network,
+    AppVersion
   ],
   bootstrap: [AppComponent]
 })
