@@ -18,7 +18,7 @@ import { TabsHideDirective } from './tabs-hide.directive';
 import { PopupService } from 'src/services/popupService';
 import { Network } from '@ionic-native/network/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
-
+import { Camera } from '@ionic-native/camera/ngx';
 @NgModule({
   declarations: [AppComponent, TabsHideDirective],
   entryComponents: [],
@@ -32,7 +32,8 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     HttpService,
     PopupService,
     Network,
-    AppVersion
+    AppVersion,
+    Camera
   ],
   bootstrap: [AppComponent]
 })
