@@ -4,6 +4,8 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { PopupService } from 'src/services/popupService';
 import { ActionSheetController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -13,7 +15,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 export class Tab1Page {
   base64Image: string = ''
-  constructor(private network: Network, private popup: PopupService, private appVersion: AppVersion , public actionSheetController: ActionSheetController, private camera: Camera) {}
+  constructor(private network: Network, private popup: PopupService, private appVersion: AppVersion , public actionSheetController: ActionSheetController, private camera: Camera,
+    private photoLibrary: PhotoLibrary, private imagePicker: ImagePicker) {}
   
   getTestNetwork() {
     this.popup.popupAlert(this.network.type)
@@ -44,6 +47,7 @@ export class Tab1Page {
            // imageData is either a base64 encoded string or a file URI
            // If it's base64 (DATA_URL):
            this.base64Image = 'data:image/jpeg;base64,' + imageData;
+           this.popup.popupAlert(this.base64Image)
           }, (err) => {
            // Handle error
           });
@@ -54,6 +58,19 @@ export class Tab1Page {
         icon: 'images',
         handler: () => {
           console.log('Favorite clicked');
+          const options = {
+            quality: 100,
+            maximumImagesCount: 2,
+            width: 200,
+            height: 300
+          }
+          this.imagePicker.getPictures(options).then((results) => {
+            this.base64Image = results[0];
+            this.popup.popupAlert(this.base64Image)
+            for (var i = 0; i < results.length; i++) {
+                console.log('Image URI: ' + results[i]);
+            }
+          }, (err) => { });
         }
       }, {
         text: '取消',

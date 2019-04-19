@@ -19,6 +19,9 @@ import { PopupService } from 'src/services/popupService';
 import { Network } from '@ionic-native/network/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
+import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+
 @NgModule({
   declarations: [AppComponent, TabsHideDirective],
   entryComponents: [],
@@ -33,7 +36,9 @@ import { Camera } from '@ionic-native/camera/ngx';
     PopupService,
     Network,
     AppVersion,
-    Camera
+    Camera,
+    PhotoLibrary,
+    ImagePicker
   ],
   bootstrap: [AppComponent]
 })
