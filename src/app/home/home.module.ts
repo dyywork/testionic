@@ -11,10 +11,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage
+    , data: {keep: true}
   },
   {
     path: 'home-detail',
     loadChildren: './home-detail/home-detail.module#HomeDetailPageModule',
+    data: {keep: true}
   }
 ];
 
