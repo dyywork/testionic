@@ -25,9 +25,14 @@ export class HomePage implements OnInit {
     })
   }
 
-
+  
   ngOnInit() {
     console.log('ngoninit')
   }
-
+  ionViewWillEnter(){
+    this.getUrl()
+    console.log(this.test)
+    this.test = ''
+    console.log("2.0 ionViewWillEnter 顾名思义，当将要进入页面时触发");
+  }
 }
