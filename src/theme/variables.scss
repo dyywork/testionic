@@ -2,9 +2,14 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
-
+ion-toolbar{
+  --background: linear-gradient(146deg, #e90adb 2%, #0aa6EE 100%);
+  
+}
+.header-pading{
+  padding-top: 20px!important;
+}
 :root {
-  --ion-toolbar-background: linear-gradient(146deg, #0AA3E9 2%, #0aa6EE 100%);
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
