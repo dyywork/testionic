@@ -1,3 +1,3 @@
 # ionic4-tabs
-ionic 慢慢探索中。。。
+##  Android Demo 下载
 !['index'](src/assets/xiazai.jpg)
