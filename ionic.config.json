@@ -1,0 +1,7 @@
+{
+  "name": "aganpaytest",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
