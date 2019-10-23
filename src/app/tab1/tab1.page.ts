@@ -32,5 +32,6 @@ export class Tab1Page {
     this.httpService.get('https://api.apiopen.top/getJoke', {page:1,count:2,type: 'video'}).subscribe(res => {
       console.log(res)
     })
+    this.router.navigate(['/tabs/tab1/tab-details'])
   }
 }

@@ -75,3 +75,9 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+ion-toolbar {
+  --background: linear-gradient(90deg, #24d6ea, #3880ff 100%);
+}
+ion-title {
+  --color: #ffffff;
+}

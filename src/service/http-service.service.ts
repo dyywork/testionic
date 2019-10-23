@@ -72,6 +72,8 @@ export class HttpServiceService {
         this.alert('参数有误，请检查')
       } else if (error.status === 500) {
         this.alert('接口有错，联系后台管理员')
+      } else {
+        this.alert(error.message)
       }
       console.error(`Backend returned code ${error.status}, ` +
       `body was: ${error.error}`);
