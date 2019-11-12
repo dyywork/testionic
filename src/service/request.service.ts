@@ -6,9 +6,6 @@ import { LoadingController, AlertController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class RequestService {
-  static request(arg0: { url: string; params: any; }) {
-    throw new Error("Method not implemented.");
-  }
 
   constructor(private httpClient: HttpClient, private loading: LoadingController,public alertController: AlertController) { }
 
@@ -20,7 +17,7 @@ export class RequestService {
   }
 
   public request (method,url,data: any) {
-    return this.httpClient.request(method,url,data)
+    return this.httpClient.request(method,url,{...data, ...this.headerOptions})
   }
 
 }
