@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Observable, throwError  } from 'rxjs';
-import { catchError,finalize, tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,8 @@ export class HttpServiceService {
   
   constructor(private httpClient: HttpClient, private loading: LoadingController,public alertController: AlertController) { }
   
+  BASE_API_URL = ''
+
   headerOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -26,13 +28,12 @@ export class HttpServiceService {
         observe: 'response',
         params
       }).pipe(
-        tap(response => {
+        tap((response) => {
           this.handleSuccess(response)
         },
         error => {
           this.handleError(error)
         }),
-        // catchError(this.handleError),
         finalize(() => {
           this.loadHide()
         })
@@ -47,18 +48,17 @@ export class HttpServiceService {
     }).pipe(
       tap(response => {
         this.handleSuccess(response)
-      },error => {
+      },
+      error => {
         this.handleError(error)
       }),
-      // catchError(this.handleError),
       finalize(() => {
         this.loadHide()
       })
     )
   }
 
-  private handleSuccess(response: HttpResponse<any>) {
-    
+  private handleSuccess(response) {
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -104,27 +104,4 @@ export class HttpServiceService {
   private async loadHide() {
     await this.loading.dismiss()
   }
-
-/*   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  public async httpService(method: string, url:string, params: any) {
-    const loading = await this.loading.create({
-      message: '加载中...',
-      duration: 2000,
-      translucent: true,
-      cssClass: 'custom-class custom-loading'
-    });
-    await loading.present();
-    return this.httpClient.request(method , url+ this.toQueryString(params), this.httpOptions).toPromise().then(async response=> {
-      await loading.dismiss();
-      return response
-    })
-    .catch(async error => {
-      await loading.dismiss();
-      console.log(error)
-    })
-  } */
-
-
 }
