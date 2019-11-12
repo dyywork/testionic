@@ -7,7 +7,7 @@ import { Observable  } from 'rxjs';
 export class test {
   constructor(public requestService: RequestService){}
 
-  public login (data: any): Observable<any> {
+  public login (data: any) {
     return this.requestService.request(
       'get',
       'https://api.apiopen.top/getJoke',
