@@ -9,21 +9,21 @@ import { FormComponent } from '../contact/form/form.component';
 export class LoginPage implements OnInit {
 
   // 定义初始化参数
-  username: string = 'username'
-  pwd: string = '123456'
+  username = 'username';
+  pwd = '123456';
 
-  //@ViewChild 父元素调用子元素方法，以及获取子元素属性的方式
+  // @ViewChild 父元素调用子元素方法，以及获取子元素属性的方式
   @ViewChild(FormComponent, {static: false})
-  private loginForm: FormComponent
+  private loginForm: FormComponent;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log(this.router)
+    console.log(this.router);
   }
   goTabs() {
-    console.log(this.loginForm.username)
-    this.router.navigate(['/tabs/tab1'])
+    console.log(this.loginForm.username);
+    this.router.navigate(['/tabs/tab1']);
   }
 
 }

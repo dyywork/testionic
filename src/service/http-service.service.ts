@@ -2,78 +2,78 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Observable, throwError  } from 'rxjs';
-import { catchError,finalize, tap } from 'rxjs/operators';
+import { catchError, finalize, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpServiceService {
-  
-  constructor(private httpClient: HttpClient, private loading: LoadingController,public alertController: AlertController) { }
-  
+
+  constructor(private httpClient: HttpClient, private loading: LoadingController, public alertController: AlertController) { }
+
   headerOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
+      Authorization: 'my-auth-token'
     }),
-  }
+  };
 
-  public get(url: string, params: any):Observable<HttpResponse<any>> {
-    this.loadShow()
-    return this.httpClient.get(url, 
+  public get(url: string, params: any): Observable<HttpResponse<any>> {
+    this.loadShow();
+    return this.httpClient.get(url,
       {
         ...this.headerOptions,
         observe: 'response',
         params
       }).pipe(
         tap(response => {
-          this.handleSuccess(response)
+          this.handleSuccess(response);
         },
         error => {
-          this.handleError(error)
+          this.handleError(error);
         }),
         // catchError(this.handleError),
         finalize(() => {
-          this.loadHide()
+          this.loadHide();
         })
-    )
+    );
   }
 
-  public post(url: string, data: any):Observable<HttpResponse<any>> {
-    this.loadShow()
+  public post(url: string, data: any): Observable<HttpResponse<any>> {
+    this.loadShow();
     return this.httpClient.post(url, data, {
       ...this.headerOptions,
       observe: 'response'
     }).pipe(
       tap(response => {
-        this.handleSuccess(response)
-      },error => {
-        this.handleError(error)
+        this.handleSuccess(response);
+      }, error => {
+        this.handleError(error);
       }),
       // catchError(this.handleError),
       finalize(() => {
-        this.loadHide()
+        this.loadHide();
       })
-    )
+    );
   }
 
   private handleSuccess(response: HttpResponse<any>) {
-    
+
   }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      console.log(1)
+      console.log(1);
     } else {
-      console.log(error)
+      console.log(error);
       if (error.status === 400) {
-        this.alert('请求失败')
+        this.alert('请求失败');
       } else if (error.status === 404) {
-        this.alert('参数有误，请检查')
+        this.alert('参数有误，请检查');
       } else if (error.status === 500) {
-        this.alert('接口有错，联系后台管理员')
+        this.alert('接口有错，联系后台管理员');
       } else {
-        this.alert(error.message)
+        this.alert(error.message);
       }
       console.error(`Backend returned code ${error.status}, ` +
       `body was: ${error.error}`);
@@ -102,7 +102,7 @@ export class HttpServiceService {
   }
 
   private async loadHide() {
-    await this.loading.dismiss()
+    await this.loading.dismiss();
   }
 
 /*   httpOptions = {
